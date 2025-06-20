@@ -1,9 +1,10 @@
 import time
 
-work_time = 1*60
-break_time = 1*60
+work_time = 1
+break_time = 1
+long_break_time = 1
 
-def start_timer(wt, bt):
+def start_timer(wt, bt, lbt):
     while wt != 0:
         print(f'{wt//60}:{wt%60}')
         wt-=1
@@ -16,6 +17,36 @@ def start_timer(wt, bt):
     print('Time to work!')
 
 
-a = input()
-if a=='start':
-    start_timer(work_time, break_time)
+def settings():
+    pass
+
+
+def stats():
+    pass
+
+
+def control():
+    flag =True
+    while flag:
+        command = input('Type a command: ')
+        match command:
+            case 'start':
+                start_timer(work_time, break_time, )
+            case 'settings':
+                settings()
+            case 'stats':
+                stats()
+            case 'exit': exit()
+            case _:
+                print("""
+Unknown command. Use this:
+-start: start timer
+-stats: statistics of using pomodoro timer
+-settings: change settings
+-exit: exit from timer
+""")
+        
+
+
+if __name__ == '__main__':
+    control()
