@@ -27,10 +27,27 @@ class Timer():
             self.save_settings(self.settings)
 
 
+    def change_state(self):
+        flag = True
+        states = ['work', 'break', 'long break']
+        while flag:
+            if a := input('Type one of this statuses: work, break, long break: ') in states:
+                flag = False
+                match a:
+                    case 'work':
+                        self.current_state = 'WORK'
+                    case 'break':
+                        self.current_state = 'BREAK'
+                    case 'long break':
+                        self.current_state = 'LONGBREAK'
+            else:
+                print("I don't understood you.")
+
+
     def control(self):
         flag =True
         while flag:
-            command = input('Type a command: ')
+            command = input('Type a command or "help" for information: ')
             match command:
                 case 'start':
                     self.start_timer(self.work_time, self.break_time, self.long_brre)
@@ -41,6 +58,15 @@ class Timer():
                 case 'stats':
                     self.check_stats()
                 case 'exit': exit()
+                case 'help':
+                    print("""
+Use this:
+    -start: start timer
+    -change: change state of timer
+    -stats: statistics of using pomodoro timer
+    -settings: change settings
+    -exit: exit from timer
+    """)
                 case _:
                     print("""
 Unknown command. Use this:
