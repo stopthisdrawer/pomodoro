@@ -15,7 +15,7 @@ class Timer():
     def load_settings(self):
         try:
             with open ('settings.json', 'r') as f:
-                settings = f.read()
+                self.settings = json.load(f)
         except:
             self.settings = {
                 'work_time': 25,
